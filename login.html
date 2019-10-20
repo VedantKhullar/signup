@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>WEBSITE</title>
+  <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button id="btn" type="button" name="button">Sign In</button>
+<button id="btn2" type="button" name="button2">Sign Up</button>
+<div id="modal" class="form">
+  <form class="login" name="login" onsubmit="return validateform()">
+  <input type="text" name="name" placeholder="Username">
+  <input type="password" name="password" placeholder="Password"><br>
+	  <button type="submit" class="button">Sign In</button>
+</form>
+
+</div>
+
+
+<div id="modal2" class="form2">
+  <form class="login" name="login1" onsubmit="return validate()">
+  <input type="text" name="name" placeholder="Username">
+  <input type="text" name="email" placeholder="Email">
+  <input type="password" name="password" placeholder="Password">
+  <input type="tel" name="num" placeholder="Mobile Number">
+  <input type="date" name="date" placeholder="DOB" style="width:200px;">
+
+	  <button type="submit" class="button" >Sign Up</button>
+</form>
+
+
+</div>
+<script type="text/javascript">
+
+  var mod=document.getElementById('modal');
+  var btn=document.getElementById('btn');
+  btn.addEventListener('click',openModal);
+  function openModal(){
+    mod.style.display='block';
+    mod2.style.display='none';
+  }
+  var mod2=document.getElementById('modal2');
+  var btn2=document.getElementById('btn2');
+  btn2.addEventListener('click',openModal2);
+  function openModal2(){
+    mod2.style.display='block';
+    mod.style.display='none';
+  }
+
+</script>
+<script type="text/javascript">
+function validateform(){
+var name=document.login.name.value;
+var password=document.login.password.value;
+console.log(name);
+if (name==null || name==""){
+alert("Name can't be blank");
+return false;
+}
+else if(password==null||password==""){
+  alert("Invalid Password");
+  return false;
+}
+else if(password.length<8){
+alert("Password must be at least 8 characters long.");
+return false;
+}
+}
+function validate(){
+  var num=document.login1.num.value;
+  var name=document.login1.name.value;
+  var password=document.login1.password.value;
+  var email=document.login1.email.value;
+  var date=document.login1.date.value
+  var x=document.login1.email.value;
+var atposition=x.indexOf("@");
+var dotposition=x.lastIndexOf(".");
+  if(name==null || name=="" || num==null || num==""|| email==null || email=="" || password==null || password==""||date==null || date=="")
+  {
+    alert("Fields cant be blank");
+    return false;
+  }
+  else if(password.length<8){
+  alert("Password must be at least 8 characters long.");
+  return false;
+  }
+
+else if (isNaN(num)){
+  alert("Enter Numeric value for mobile number");
+  return false;
+}
+else if(num.length!=10)
+{
+  alert("Mobile number requires 10 digits");
+  return false;
+}
+else if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){
+  alert("Please enter a valid e-mail address");
+  return false;
+  }
+}
+
+
+</script>
+  </body>
+</html>
